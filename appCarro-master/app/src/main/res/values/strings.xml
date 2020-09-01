@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">AppVeiculo</string>
+    <string name="Novo_veiculo">Adiconar Novo Veiculo</string>
+    <string name="Abastecer">Abastecer</string>
+    <string name="salvar">Salvar</string>
+
+    <string name="nome_veiculo">Entre com o Nome do Veiculo</string>
+    <string name="placa_veiculo">Entre com a placa do Veiculo</string>
+    <string name="ano_veiculo">Entre com o ano do Veiculo</string>
+
+
+
+
+
+
+
+
+</resources>
