@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void editar(){
+    public void editar(View view){
 
       //  Carro carro=null;
         Intent it = new Intent(MainActivity.this,CadastroVeiculo.class);//cria a intent
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int k) {
 
 
-                    CarroDao.remove(i);
+                        CarroDao.remove(i);
                         atualizaListagem();
                     }
                 });
