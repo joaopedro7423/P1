@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
             Intent it = new Intent(MainActivity.this, CadastroVeiculo.class);//cria a intent
 
-            startActivityForResult(it,121);//inicia nova activity
+            startActivityForResult(it,RESULT_OK);//inicia nova activity
     }
 
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
       //  Carro carro=null;
         Intent it = new Intent(MainActivity.this,CadastroVeiculo.class);//cria a intent
         //it.putExtra("carro",carro);
-        startActivityForResult(it,121);//inicia nova activity
+        startActivityForResult(it,RESULT_OK);//inicia nova activity
     }
 
     @Override
@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
                         CarroDao.remove(i);
                         atualizaListagem();
+
                     }
                 });
 
@@ -106,6 +107,17 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+        listagemCarro.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent it = new Intent(MainActivity.this, CadastroVeiculo.class);
+                it.putExtra("idLista", i);
+                startActivityForResult(it, RESULT_OK);
+
+            }
+        });
+
     }
 
 }

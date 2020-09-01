@@ -2,6 +2,7 @@ package br.unigran.appveiculo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -24,6 +25,11 @@ public class CadastroVeiculo extends AppCompatActivity {
         ano= findViewById(R.id.ano);
         placa= findViewById(R.id.placa);
 
+
+        Intent it = getIntent();
+        int idLista = it.getIntExtra("idLista", 0);
+                Carro carro =(Carro) CarroDao.getDados().get(idLista);
+                nome.setText(carro.getNome());
     }
 
     /**
