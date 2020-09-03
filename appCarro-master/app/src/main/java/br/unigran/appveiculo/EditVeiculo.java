@@ -6,43 +6,61 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import br.unigran.domain.Carro;
 import br.unigran.domain.CarroDao;
 
-public class CadastroVeiculo extends AppCompatActivity {
-
+public class EditVeiculo extends AppCompatActivity {
     private EditText nome;
     private EditText ano;
     private EditText placa;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_veiculo);
-        //vinculo com a tela
-            nome = findViewById(R.id.nome_veiculo);
+        setContentView(R.layout.activity_edit_veiculo);
+        nome = findViewById(R.id.nome_veiculo);
         ano = findViewById(R.id.ano);
         placa = findViewById(R.id.placa);
 
-        }
+        Intent it = getIntent();
+        int idLista = it.getIntExtra("idLista", 0);
 
-    /**
-     * Ação botao salvar veiculo
-     * @param view
-     */
+
+       Carro carro = (Carro) CarroDao.getDados().get(idLista);
+
+        nome.setText(carro.getNome()+"");
+        ano.setText(carro.getAno()+"");
+        placa.setText(carro.getPlaca());
+
+
+
+            Toast.makeText(getApplicationContext(),
+                    "clicou no item"  + carro, Toast.LENGTH_LONG).show();
+
+
+
+    }
+
+
     public  void salvarVeiculo(View view){
-        //crio carro
-        Carro carro = new Carro();
-        //pego os dados e preencho o carro
+        Intent it = getIntent();
+        int idLista = it.getIntExtra("idLista", 0);
+        Carro carro = (Carro) CarroDao.getDados().get(idLista);
+
         carro.setNome(nome.getText().toString());
         carro.setAno(Integer.parseInt(ano.getText().toString()));
         carro.setPlaca(placa.getText().toString());
-        //salvo carro na lista
-        CarroDao.salvar(carro);
-        //verifico se foi salvo
+
         System.out.println(CarroDao.getDados());
-      //  finish();//fecha
+
         super.onBackPressed();
+
     }
+
+
+
+
 }

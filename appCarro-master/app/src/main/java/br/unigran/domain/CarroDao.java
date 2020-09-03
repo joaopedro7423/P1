@@ -11,6 +11,7 @@ public class CarroDao {
     public static  void salvar(Carro carro){
         dados.add(carro);
     }
+
     public static  void remove(int i){
         dados.remove(i);
     }

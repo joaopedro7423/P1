@@ -30,10 +30,10 @@
 
     <ListView
         android:id="@+id/ListaDeAbastecimento"
-        android:layout_width="355dp"
-        android:layout_height="517dp"
+        android:layout_width="371dp"
+        android:layout_height="518dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

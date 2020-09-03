@@ -75,8 +75,10 @@ public class MainActivity extends AppCompatActivity {
         listagemCarro.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(final AdapterView<?> adapterView, View view, final int i, long l) {
+
+                Carro carro = (Carro) CarroDao.getDados().get(i);
                 Toast.makeText(getApplicationContext(),
-                        "clicou no item" + i, Toast.LENGTH_LONG).show();
+                        "clicou no item" + i + carro, Toast.LENGTH_LONG).show();
 
 
                 AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
@@ -86,8 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int j) {
-                        Toast.makeText(getApplicationContext(),
-                                "Cancelar Escolido", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Cancelar Escolido", Toast.LENGTH_LONG).show();
 
                     }
                 }) .setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
@@ -99,6 +100,19 @@ public class MainActivity extends AppCompatActivity {
                         atualizaListagem();
 
                     }
+                }) .setNeutralButton("Editar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int k) {
+
+                        Intent it = new Intent(MainActivity.this, EditVeiculo.class);
+                        it.putExtra("idLista", i);
+
+                        startActivityForResult(it, RESULT_OK);
+
+
+
+
+                    }
                 });
 
                     AlertDialog alertDialog = alerta.create();
@@ -108,15 +122,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        listagemCarro.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent it = new Intent(MainActivity.this, CadastroVeiculo.class);
-                it.putExtra("idLista", i);
-                startActivityForResult(it, RESULT_OK);
-
-            }
-        });
 
     }
 
