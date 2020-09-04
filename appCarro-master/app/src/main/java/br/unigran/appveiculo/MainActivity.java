@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
             Intent it = new Intent(MainActivity.this, CadastroVeiculo.class);//cria a intent
 
-            startActivityForResult(it,RESULT_OK);//inicia nova activity
+            startActivityForResult(it,121);//inicia nova activity
+        atualizaListagem();
     }
 
 
@@ -51,14 +52,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(it2);//inicia nova activity
     }
 
-
-    public void editar(View view){
-
-      //  Carro carro=null;
-        Intent it = new Intent(MainActivity.this,CadastroVeiculo.class);//cria a intent
-        //it.putExtra("carro",carro);
-        startActivityForResult(it,RESULT_OK);//inicia nova activity
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -83,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
                 AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
                 alerta.setTitle("Você deseja excluir?");
-                alerta.setMessage("Você deseja realmente excluir esse veículo?")
+                alerta.setMessage("Você deseja realmente excluir o veículo " + carro +"?")
+
                  .setCancelable(false)
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
@@ -107,9 +101,9 @@ public class MainActivity extends AppCompatActivity {
                         Intent it = new Intent(MainActivity.this, EditVeiculo.class);
                         it.putExtra("idLista", i);
 
-                        startActivityForResult(it, RESULT_OK);
+                        startActivityForResult(it, 121);
 
-
+                        atualizaListagem();
 
 
                     }
@@ -117,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
                     AlertDialog alertDialog = alerta.create();
                     alertDialog.show();
-
+                atualizaListagem();
             }
 
         });

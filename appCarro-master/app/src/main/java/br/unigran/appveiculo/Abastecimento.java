@@ -35,7 +35,7 @@ public class Abastecimento extends AppCompatActivity {
 
         Intent it = new Intent(Abastecimento.this, CadastroAbastecid.class);//cria a intent
 
-        startActivity(it);//inicia nova activity
+        startActivityForResult(it, 121);//inicia nova activity
 
     }
 

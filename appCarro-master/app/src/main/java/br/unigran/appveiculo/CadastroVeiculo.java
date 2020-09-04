@@ -44,5 +44,6 @@ public class CadastroVeiculo extends AppCompatActivity {
         System.out.println(CarroDao.getDados());
       //  finish();//fecha
         super.onBackPressed();
+
     }
 }
