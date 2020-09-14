@@ -11,19 +11,29 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import br.unigran.appveiculo.db.BancodeDados;
+import br.unigran.domain.AbastecidaBanco;
 import br.unigran.domain.AbastecidaDao;
+import br.unigran.domain.CarroBanco;
 
 
 public class Abastecimento extends AppCompatActivity {
 
 
     private ListView ListaDeAbastecimento;
+    private AbastecidaBanco ab;
+    private BancodeDados bancodeDados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abastecimento);
+        bancodeDados = new BancodeDados(this);
+        ab = new AbastecidaBanco(bancodeDados.getReadableDatabase());
+
+
         ListaDeAbastecimento=findViewById(R.id.ListaDeAbastecimento);
+
         atualizaListagem();
 
 
@@ -61,7 +71,7 @@ public class Abastecimento extends AppCompatActivity {
 
     public void atualizaListagem(){
         //crio adapter passando contexto, layout e lista
-        final ArrayAdapter adapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item, AbastecidaDao.getDados());
+        final ArrayAdapter adapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item, ab.getAbastecidas());
         ListaDeAbastecimento.setAdapter(adapter);//envio para lista
         System.out.println(AbastecidaDao.getDados());
 

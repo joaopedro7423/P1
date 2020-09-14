@@ -1,9 +1,14 @@
-package br.unigran.domain;
+package br.unigran.domain.entidades;
 
 public class Carro {
+    private Integer id;
     private String nome;
     private String placa;
     private Integer ano;
+
+    public Integer getId() { return id;}
+
+    public void setId(Integer id) { this.id = id; }
 
     public String getNome() {
         return nome;
@@ -31,11 +36,10 @@ public class Carro {
 
     @Override
     public String toString() {
-        return "Carro{" +
-                "nome='" + nome + '\'' +
-                ", placa='" + placa + '\'' +
-                ", ano=" + ano +
-                '}';
+        return
+                "Carro='" + nome + '\'' +
+                ",Placa='" + placa + '\'' +
+                ",Ano=" + ano ;
 
     }
 

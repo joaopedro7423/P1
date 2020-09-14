@@ -3,6 +3,8 @@ package br.unigran.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.unigran.domain.entidades.Abastecida;
+
 public class AbastecidaDao {
 
     private static List<Abastecida> dados = new ArrayList<>();
